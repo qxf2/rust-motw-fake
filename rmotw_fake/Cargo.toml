@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 fake = { version = "2.9", features = ["derive"] }
+locale = "0.2.2"
 rand = "0.8.5"
