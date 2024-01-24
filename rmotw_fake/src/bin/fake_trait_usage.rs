@@ -1,4 +1,4 @@
-// Example showing the basic usage of generating fake data using Fake Trait
+//Example program showing the basic usage of generating fake data using Fake Trait
 
 use fake::Fake;
 

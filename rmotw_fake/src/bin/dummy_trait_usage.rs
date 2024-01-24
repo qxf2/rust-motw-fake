@@ -1,4 +1,4 @@
-//This example shows how to use Dummy Trait for generating fake data. This is useful for data structures
+//Example program to demonstrate how to use Dummy Trait for generating fake data
 
 use fake::faker::boolean::en::*;
 use fake::faker::name::en::*;
@@ -44,8 +44,8 @@ pub struct Comment {
 pub fn generate_fake_post() {
     let post: SocialMediaPost = Faker.fake();
     println!("{:#?}", post);  
-    //let posts = fake::vec![SocialMediaPost; 3];
-    //println!("{:?}", posts)
+    let posts = fake::vec![SocialMediaPost; 3];
+    println!("{:?}", posts)
 }
 
 pub fn main() {

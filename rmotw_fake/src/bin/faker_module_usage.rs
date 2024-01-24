@@ -1,5 +1,4 @@
-// Example of using faker module to generate fake values for specific formats, can generate fake details with more details and options.
-// It has different helpers in different categories, such as name, address, lorem, etc. The faker module is structured in a way that each category has a raw module and several localized modules. The raw module provides a generic helper that can create fake data in any locale that you specify. The localized modules provide convenient helpers that can create fake data in a specific locale that is already defined.
+// Example program showing the usage of faker module to generate fake data for specific formats and locales
 
 use fake::{Fake};
 use fake::locales::{EN, FR_FR}; 
