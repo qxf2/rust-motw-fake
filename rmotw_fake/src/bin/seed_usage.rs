@@ -1,9 +1,7 @@
-//Example to show how seed works
-
 use fake::{Dummy, Faker, Fake};
-use fake::faker::name::en::*;
+use fake::faker::name::en::Name;
 use fake::faker::address::en::StreetName;
-use fake::faker::phone_number::en::*;
+use fake::faker::phone_number::en::PhoneNumber;
 use fake::faker::internet::en::SafeEmail;
 use fake::faker::company::en::CompanyName;
 use rand::rngs::StdRng;
@@ -32,7 +30,11 @@ pub struct Profile {
 
 fn dummy_profile(rng: &mut StdRng) {
     let profile: Profile = Faker.fake_with_rng(rng);
-    println!("{:?}", profile);
+    let output = format!(
+        "Name: {}\nAge: {}\nAddress: {}\nPhone Number: {}\nEmail: {}\nCompany: {}\n",
+        profile.name, profile.age, profile.address, profile.phone_number, profile.email, profile.company
+    );
+    println!("{}", output);
 }
 
 fn main() {
