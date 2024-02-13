@@ -1,3 +1,5 @@
+//Example to show how seed works
+
 use fake::{Dummy, Faker, Fake};
 use fake::faker::name::en::Name;
 use fake::faker::address::en::StreetName;
