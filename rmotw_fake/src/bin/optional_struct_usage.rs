@@ -49,3 +49,4 @@ fn main() {
     let profile: Profile = Faker.fake();
     print_profile(profile)
 }
+
