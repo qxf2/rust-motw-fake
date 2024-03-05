@@ -1,8 +1,8 @@
 # rust-fake-crate-examples
-This repository contains a collection of Rust code examples demonstrating the use of the `fake` crate for generating fake data and various Rust language features. 
+This repository contains a collection of Rust code examples demonstrating the use of the `fake` crate for generating fake data. 
 
 ## Introduction
-The fake crate is useful for creating mock data for different types of data without having to write a lot of code. For instance, if you wish to evaluate your program’s performance with different inputs or need illustrative examples, this crate allows you to generate authentic-looking data for said purposes. It uses the rand crate as a dependency and implements the Dummy and Fake traits for many common types, as well as providing the faker module with various helpers for generating fake values in different formats and locales. Additionally, it also provides macros and functions for creating collections and custom types with fake value. Examples showcasing all these features are provided in this repo.
+The fake crate is useful for creating mock data for different types of data without writing a lot of code. For instance, if you wish to evaluate your program’s performance with different inputs or need illustrative examples, this crate allows you to generate authentic-looking data. It uses the rand crate as a dependency and implements the Dummy and Fake traits for many common types, as well as providing the faker module with various helpers for generating fake values in different formats and locales. It also provides macros and functions for creating collections and custom types with fake values. Examples showcasing all these features are provided in this repo.
 
 ## Installation
 
