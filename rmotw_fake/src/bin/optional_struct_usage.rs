@@ -24,29 +24,9 @@ pub struct Profile {
 pub fn print_profile(profile: Profile) {
     println!("Profile {{\nname: \"{}\",\nage: {:?},\nfollowing: {:?},\nfollowers: {:?},\nposts: {:?}\n}}",
     profile.name, profile.age, profile.following, profile.followers, profile.posts);
-    match profile.age {
-        Some(age) => println!("Age: {}", age),
-        None => println!("Age: not provided"),
-    }
-    match profile.followers {
-        Some(followers) => println!("Followers: {}", followers),
-        None => println!("Followers: not provided"),
-    }
-    match profile.following {
-        Some(following) => println!("Following: {}", following),
-        None => println!("Following: not provided"),
-    }
-    match profile.posts {
-        Some(posts) => match posts {
-            Some(value) => println!("Posts: {}", value),
-            None => println!("Posts: not provided"),
-        },
-        None => println!("Posts: not provided"),
-    }
 }
 
 fn main() {
     let profile: Profile = Faker.fake();
     print_profile(profile)
 }
-
