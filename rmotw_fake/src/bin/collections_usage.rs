@@ -1,63 +1,44 @@
 /*
-Example program to demonstrate the use of Rust collections and the `fake` crate to generate fake data.
-It uses an example to create a double ended queue to manage a list of friends and stories associated with them.
+Example program to demonstrate the use of Rust collections to generate fake data.
+It uses an example to create a double ended queue to manage 
+a list of authors and posts associated with them.
 */
 
-use fake::{self, Fake, Faker};
+use fake::{self, Dummy};
 use std::collections::VecDeque;
-use fake::Dummy;
+use fake::faker::lorem::en::Sentence;
 use fake::faker::name::en::Name;
-use std::rc::Rc;
-use crate::fake::faker::lorem::en::Sentence;
 
-//Define a `Story` struct with a `comment` field that will be filled with fake comments
+// Define a 'Post' struct with content and author fields that will be filled with fake content
 #[derive(Debug, Dummy)]
-pub struct Story {
+pub struct Post {
     #[dummy(faker = "Sentence(5..10)")]
-    comment: String,
+    content: String,
+    #[dummy(faker = "Name()")]
+    author: String,
+}
+
+// Function to filter out posts shorter than certain length
+fn filter_posts(posts: VecDeque<Post>, min_length: usize) -> VecDeque<Post> {
+    posts.into_iter().filter(|post| post.content.len() >= min_length).collect()
 }
 
 fn main() {
-    // Generate a VecDeque of fake friend names
-    let friends = fake::vec_deque![String as Name(); 5];
-    
-    println!("Generated friends list:");
-    // Print each friend's name
-    for friend in &friends {
-        println!(" - {}", friend);
+    // Generate a VecDeque of fake 'Post' objects
+    let posts: VecDeque<Post> = fake::vec_deque![Post; 5];
+
+    println!("Generated posts:");
+    for post in &posts {
+        println!(" - Content: {}\n   Author: {}", post.content, post.author);
     }
 
-    // Create an empty VecDeque to hold `Story` objects wrapped in `Rc` (reference-counted pointers)
-    let mut stories: VecDeque<Rc<Story>> = VecDeque::new();
+    // Filter out posts that are shorter than a certain length
+    let min_length = 30; 
+    let filtered_posts = filter_posts(posts, min_length);
 
-    // Add new stories to the front of the deque for each friend
-    for friend in &friends {
-        let story: Story = Faker.fake();
-        let story = Rc::new(story);
-        stories.push_front(story.clone());
-        // Print the comment name associated with each friend's story
-        println!("Comment for {}: {}", friend, story.comment);
-    }
-
-    // Limit the number of stories to keep in the deque
-    let limit = 3;
-    // Remove the oldest stories once the limit is exceeded
-    while stories.len() > limit {
-        stories.pop_back();
-    }
-
-    // Implement the Display trait for `Story` to allow for custom printing
-    impl std::fmt::Display for Story {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-            // Print the comment name of the story
-            write!(f, "comment: {}", self.comment)
-        }
-    }
-    
-    println!("Recent updates:");
-    // Enumerate through the stories and print them with an index
-    for (i, story) in stories.iter().enumerate() {
-        println!("{}. {}", i + 1, story);
+    println!("\nPosts after filtering:");
+    for post in &filtered_posts {
+        println!(" - Content: {}\n   Author: {}", post.content, post.author);
     }
 }
 

@@ -1,4 +1,4 @@
-//Example to show how seed works
+//Example to show how seed works in 'fake' crate
 
 use fake::{Dummy, Faker, Fake};
 use fake::faker::name::en::Name;
